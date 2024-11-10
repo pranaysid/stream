@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Live Stream Embed</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #e0e0e0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .iframe-container {
+            background-color: #1a1a1a;
+            padding: 10px;
+            border-radius: 8px;
+            border: 2px solid #333;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+            max-width: 90%;
+            width: 640px;
+        }
+
+        iframe {
+            border-radius: 8px;
+            width: 100%;
+            height: 520px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="iframe-container">
+        <iframe 
+            id="liveStreamIframe"
+            frameborder="0" 
+            marginheight="0" 
+            marginwidth="0" 
+            src="https://cdn.crichdplays.ru/embed2.php?id=skysp2" 
+            name="iframe_a" 
+            scrolling="no" 
+            allowfullscreen>
+        </iframe>
+    </div>
+
+    <script>
+        // Select the iframe element
+        const iframe = document.getElementById('liveStreamIframe');
+
+        // Function to toggle fullscreen
+        function toggleFullscreen() {
+            if (iframe.requestFullscreen) {
+                iframe.requestFullscreen();
+            } else if (iframe.webkitRequestFullscreen) { // Safari
+                iframe.webkitRequestFullscreen();
+            } else if (iframe.msRequestFullscreen) { // IE/Edge
+                iframe.msRequestFullscreen();
+            }
+        }
+
+        // Event listener for "F" key press
+        document.addEventListener('keydown', (event) => {
+            if (event.key.toLowerCase() === 'f') {
+                toggleFullscreen();
+            }
+        });
+    </script>
+
+</body>
+</html>
